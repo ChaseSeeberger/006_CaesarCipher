@@ -1,19 +1,24 @@
 package caesar;
 
-import javax.swing.JOptionPane;
+import java.util.Scanner;
 
 public class BeginHere {
 
 	public static void main(String[] args) {
+		Scanner kbd = new Scanner(System.in);
+		
 		CaesarCipher myCipher = new CaesarCipher();
-		String message = "";
 		
-		message = "Please enter the plain text to encode:";
-		String plainText = JOptionPane.showInputDialog(message);
+		System.out.println("Please enter the plain text to encode:");
+		String plainText = kbd.nextLine();
 		
-		String codedText = myCipher.encode(plainText);
-		JOptionPane.showMessageDialog(null, codedText);
+		System.out.println("Please enter the key:");
+		int key = kbd.nextInt();
+		System.out.println("Your key is: " + key);
 		
+		String codedText = myCipher.encode(plainText, key);
+		System.out.println("Your secret message is: " + codedText);
+
 	}
 
 }
