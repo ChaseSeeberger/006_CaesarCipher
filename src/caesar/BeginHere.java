@@ -9,6 +9,8 @@ public class BeginHere {
 	public static void main(String[] args) {
 
 		int goAgain = 0;
+		String codedText;
+		CaesarCipher myCipher = new CaesarCipher();
 
 		while (goAgain == 0) {
 			Object[] selectionsArray = { "Encoder", "Decoder", "Cracker", "Exit" };
@@ -21,8 +23,6 @@ public class BeginHere {
 
 			switch (selection) {
 			case "Encoder":
-				CaesarCipher myCipher = new CaesarCipher();
-
 				message = "Please enter the plain text to encode:";
 				String plainText = JOptionPane.showInputDialog(message).toLowerCase();
 
@@ -30,17 +30,38 @@ public class BeginHere {
 				int key = Integer.parseInt(JOptionPane.showInputDialog(message));
 				message = "Your key is: " + key;
 
-				String codedText = myCipher.encode(plainText, key);
+				codedText = myCipher.encode(plainText, key);
 				message = "Your secret message is: " + codedText;
 				JOptionPane.showMessageDialog(null, message);
+				System.out.println(codedText);
 				break;
 
 			case "Decoder":
-				JOptionPane.showMessageDialog(null, "DECODER SWITCH BLOCK ADD CODE");
+				message = "Please enter the encoded text to decode:";
+				plainText = JOptionPane.showInputDialog(message).toLowerCase();
+
+				message = "Please enter the key to decode:";
+				key = Integer.parseInt(JOptionPane.showInputDialog(message));
+				message = "Your key is: " + key;
+
+				codedText = myCipher.decode(plainText, key);
+				message = "Your decoded message is: " + codedText;
+				JOptionPane.showMessageDialog(null, message);
 				break;
 
 			case "Cracker":
-				JOptionPane.showMessageDialog(null, "CRACKER SWITCH BLOCK ADD CODE");
+				String[] crackerList = new String[39];
+				message = "Please enter the encoded text to CRACK:";
+				plainText = JOptionPane.showInputDialog(message).toLowerCase();
+
+				crackerList = myCipher.cracker(plainText);
+
+				message = "\nYour cracker message is: ";
+				for (int i = 0; i < 39; i++) {
+					message += "\n" + crackerList[i];
+				}
+				JOptionPane.showMessageDialog(null, message);
+
 				break;
 
 			case "Exit":
