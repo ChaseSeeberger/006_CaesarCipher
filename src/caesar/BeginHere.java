@@ -16,7 +16,7 @@ public class BeginHere {
 			Object[] selectionsArray = { "Encoder", "Decoder", "Cracker", "Exit" };
 			String showFirst = "Encoder";
 			String selection = (String) JOptionPane.showInputDialog(null, "Message: Select a Utility: ",
-					"Title: Doug's Example", JOptionPane.PLAIN_MESSAGE, null, selectionsArray, showFirst);
+					"Title", JOptionPane.PLAIN_MESSAGE, null, selectionsArray, showFirst);
 			if (selection == null)
 				selection = "cancelled";
 			JOptionPane.showMessageDialog(null, "You have selected: " + selection);
